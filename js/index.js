@@ -48,12 +48,15 @@ const addUserDataToPage = (user) =>{
     const userData = user.items[0]
     newUser.textContent = userData.login
     userContainer.append(newUser)
-    newUser.addEventListener("click",()=>{
+    newUser.addEventListener("click",async ()=>{
         repoContainer.innerHTML=""
         userName.textContent = userData.login
         userPic.src = userData['avatar_url']
         userLink.href = userData['html_url']
-        loadRepoData(userData['login'])
+        if(!user.repos){
+            user.repos = await (getRepoData(userData['login']))
+        }
+        addReposToPage(user.repos)
     })
 }
 
@@ -67,12 +70,6 @@ const getRepoData = (user) =>{
     .then(body => {
         return body;
     })
-}
-
-const loadRepoData = (user) =>{
-
-    getRepoData(user)
-    .then(addReposToPage)
 }
 
 const addReposToPage = (repos) =>{
