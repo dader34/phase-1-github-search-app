@@ -5,9 +5,46 @@
 }
 
 #github-container {
-  display: flex;
+  /* display: flex; */
 }
 
 ul {
-  list-style: none;
+  list-style:disc;
+}
+
+#user-list{
+  position: absolute;
+  left: 5%;
+  top: 10%;
+}
+
+#repos-list{
+  position: absolute;
+  top:50%;
+  left: 45%;
+
+}
+
+#info{
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 60%;
+  height: 30%;
+  text-align: center;
+}
+
+#info > h2{
+  font-size: larger;
+}
+
+#info > a > img{
+  max-width: 150px;
+  max-height: 150px;
+}
+
+a{
+  text-decoration: none;
 }
